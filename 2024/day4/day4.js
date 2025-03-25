@@ -7,6 +7,10 @@ fs.readFile('./day4.txt', 'utf8', (err, data) => {
         const lines = data.split("\n")
 
 
+        console.log(`_______________`)
+        console.log(`Première partie`+"\n")
+
+
 
         // horizontale
         //
@@ -160,7 +164,106 @@ fs.readFile('./day4.txt', 'utf8', (err, data) => {
         console.log(`diagonale vers le bas vers la gauche : ${diagonalD}`)
 
 
-        
+
         console.log(`total : ${total}`)
+
+
+
+        console.log("\n"+`_______________`)
+        console.log(`Deuxième partie`+"\n")
+
+
+
+        //              pattern
+        // +-------+-------+-------+-------+
+        // |   A   |   B   |   C   |   D   |
+        // +-------+-------+-------+-------+
+        // |  M_S  |  M_M  |  S_S  |  S_M  |
+        // |  _A_  |  _A_  |  _A_  |  _A_  |
+        // |  M_S  |  S_S  |  M_M  |  S_M  |
+        // +-------+-------+-------+-------+
+        let totalx = 0
+
+        //    A
+        let xA = 0
+        // chaque ligne
+        for(let l=0; l<lines.length-2; l++) {
+
+            // chaque caractère dans la ligne
+            for(let c=0; c<lines[0].length-2; c++) {
+
+                if(lines[l].charAt(c) == 'M'
+                && lines[l].charAt(c+2) == 'S'
+                && lines[l+1].charAt(c+1) == 'A'
+                && lines[l+2].charAt(c) == 'M'
+                && lines[l+2].charAt(c+2) == 'S') {
+                    xA++
+                    totalx++
+                }
+            }
+        }
+        console.log(`x-mas premier pattern : ${xA}`)
+
+        //    B
+        let xB = 0
+        // chaque ligne
+        for(let l=0; l<lines.length-2; l++) {
+
+            // chaque caractère dans la ligne
+            for(let c=0; c<lines[0].length-2; c++) {
+
+                if(lines[l].charAt(c) == 'M'
+                && lines[l].charAt(c+2) == 'M'
+                && lines[l+1].charAt(c+1) == 'A'
+                && lines[l+2].charAt(c) == 'S'
+                && lines[l+2].charAt(c+2) == 'S') {
+                    xB++
+                    totalx++
+                }
+            }
+        }
+        console.log(`x-mas deuxième pattern : ${xB}`)
+
+        //    C
+        let xC = 0
+        // chaque ligne
+        for(let l=0; l<lines.length-2; l++) {
+
+            // chaque caractère dans la ligne
+            for(let c=0; c<lines[0].length-2; c++) {
+
+                if(lines[l].charAt(c) == 'S'
+                && lines[l].charAt(c+2) == 'S'
+                && lines[l+1].charAt(c+1) == 'A'
+                && lines[l+2].charAt(c) == 'M'
+                && lines[l+2].charAt(c+2) == 'M') {
+                    xC++
+                    totalx++
+                }
+            }
+        }
+        console.log(`x-mas troisième pattern : ${xC}`)
+
+        //    D
+        let xD = 0
+        // chaque ligne
+        for(let l=0; l<lines.length-2; l++) {
+
+            // chaque caractère dans la ligne
+            for(let c=0; c<lines[0].length-2; c++) {
+
+                if(lines[l].charAt(c) == 'S'
+                && lines[l].charAt(c+2) == 'M'
+                && lines[l+1].charAt(c+1) == 'A'
+                && lines[l+2].charAt(c) == 'S'
+                && lines[l+2].charAt(c+2) == 'M') {
+                    xD++
+                    totalx++
+                }
+            }
+        }
+        console.log(`x-mas quatrième pattern : ${xD}`)
+
+        console.log(`total de x-mas : ${totalx}`)
     }
 })
